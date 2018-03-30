@@ -24,7 +24,7 @@ namespace MyHotelApp
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                      "~/Content/Slate.css",
                       "~/Content/site.css"));
         }
     }
