@@ -1,1 +1,34 @@
-﻿
+﻿@model MyHotelApp.ViewModels.RoomViewModel
+
+@{
+    ViewBag.Title = "SeeAllRooms";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Rooms</h2>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Room Number</th>
+            <th>Room Type</th>
+            <th>Is Clean</th>
+            
+            <th>Status</th>
+            
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var el in Model.RoomInfoList)
+        {
+        <tr>
+            <td>@el.Room.Id</td>
+            <td>@el.RoomType</td>
+            <td>@el.Room.IsClean</td>
+            <td>@el.RoomStatus</td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+
