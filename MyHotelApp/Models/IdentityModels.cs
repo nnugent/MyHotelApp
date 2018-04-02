@@ -20,8 +20,15 @@ namespace MyHotelApp.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<GuestAccount> GuestAccounts { get; set; }
+        public DbSet<GuestReservationJunction> GuestReservationJunctions { get; set; }
+        public DbSet<Reservation> Reservations { get; set; }
+        public DbSet<Room> Rooms { get; set; }
+        public DbSet<RoomType> RoomTypes { get; set; }
+        public DbSet<State> States { get; set; }
+        public DbSet<RoomStatus> RoomStatuses { get; set; }
 
-       
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
@@ -29,6 +36,7 @@ namespace MyHotelApp.Models
 
         public static ApplicationDbContext Create()
         {
+
             return new ApplicationDbContext();
         }
     }

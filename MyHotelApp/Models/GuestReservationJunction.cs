@@ -8,6 +8,8 @@ namespace MyHotelApp.Models
 {
     public class GuestReservationJunction
     {
+
+        public int Id { get; set; }
         public int GuestAccountID { get; set; }
 
         [ForeignKey("GuestAccountID")]

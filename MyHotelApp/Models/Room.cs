@@ -14,10 +14,12 @@ namespace MyHotelApp.Models
 
         public bool IsClean { get; set; }
 
-        public string RoomStatus { get; set; }
+        public int RoomStatusId { get; set; }
+
+        [ForeignKey("RoomStatusId")]
+        public RoomStatus RoomStatus { get; set; }
 
         [ForeignKey("RoomTypeId")]
         public RoomType RoomType { get; set; }
-
     }
 }

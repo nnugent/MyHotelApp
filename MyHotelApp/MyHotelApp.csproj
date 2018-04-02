@@ -203,9 +203,21 @@
     <Compile Include="Migrations\201804021336173_InitialCreate.Designer.cs">
       <DependentUpon>201804021336173_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201804021538384_InitalizeAllModels.cs" />
-    <Compile Include="Migrations\201804021538384_InitalizeAllModels.Designer.cs">
-      <DependentUpon>201804021538384_InitalizeAllModels.cs</DependentUpon>
+    <Compile Include="Migrations\201804021704157_InitializeAllModels.cs" />
+    <Compile Include="Migrations\201804021704157_InitializeAllModels.Designer.cs">
+      <DependentUpon>201804021704157_InitializeAllModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804021707558_UpdateRoomStatus.cs" />
+    <Compile Include="Migrations\201804021707558_UpdateRoomStatus.Designer.cs">
+      <DependentUpon>201804021707558_UpdateRoomStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804021830540_InitializeAllModels1.cs" />
+    <Compile Include="Migrations\201804021830540_InitializeAllModels1.Designer.cs">
+      <DependentUpon>201804021830540_InitializeAllModels1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804021931078_SeedStatusTable.cs" />
+    <Compile Include="Migrations\201804021931078_SeedStatusTable.Designer.cs">
+      <DependentUpon>201804021931078_SeedStatusTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -215,11 +227,12 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Reservation.cs" />
     <Compile Include="Models\Room.cs" />
-    <Compile Include="Models\RoomAvailability.cs" />
+    <Compile Include="Models\RoomStatus.cs" />
     <Compile Include="Models\RoomType.cs" />
     <Compile Include="Models\State.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\AdministratorFormViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -309,10 +322,12 @@
     <Content Include="Scripts\umd\popper-utils.min.js.map" />
     <Content Include="Scripts\umd\popper-utils.js.map" />
     <Content Include="Views\Shared\_Navbar.cshtml" />
+    <Content Include="Views\Administrator\HotelEntryForm.cshtml" />
+    <Content Include="Views\Administrator\CreateRoomType.cshtml" />
+    <Content Include="Views\Administrator\SeeAllRooms.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Administrator\" />
     <Folder Include="Views\Employee\" />
     <Folder Include="Views\GuestMember\" />
     <Folder Include="Views\Guest\" />
@@ -330,8 +345,17 @@
     <EmbeddedResource Include="Migrations\201804021336173_InitialCreate.resx">
       <DependentUpon>201804021336173_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804021538384_InitalizeAllModels.resx">
-      <DependentUpon>201804021538384_InitalizeAllModels.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201804021704157_InitializeAllModels.resx">
+      <DependentUpon>201804021704157_InitializeAllModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804021707558_UpdateRoomStatus.resx">
+      <DependentUpon>201804021707558_UpdateRoomStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804021830540_InitializeAllModels1.resx">
+      <DependentUpon>201804021830540_InitializeAllModels1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804021931078_SeedStatusTable.resx">
+      <DependentUpon>201804021931078_SeedStatusTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

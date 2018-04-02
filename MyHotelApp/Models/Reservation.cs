@@ -30,5 +30,7 @@ namespace MyHotelApp.Models
 
         public int RoomTypeId { get; set; }
 
+        [ForeignKey("RoomTypeId")]
+        public RoomType RoomType { get; set; }
     }
 }
