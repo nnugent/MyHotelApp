@@ -10,6 +10,7 @@ namespace MyHotelApp.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
+            ContextKey = "MyHotelApp.Models.ApplicationDbContext";
         }
 
         protected override void Seed(MyHotelApp.Models.ApplicationDbContext context)
