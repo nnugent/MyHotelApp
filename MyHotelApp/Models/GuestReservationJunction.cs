@@ -7,5 +7,7 @@ namespace MyHotelApp.Models
 {
     public class GuestReservationJunction
     {
+        public int GuestAccountID { get; set; }
+        public int ReservationId { get; set; }
     }
 }
