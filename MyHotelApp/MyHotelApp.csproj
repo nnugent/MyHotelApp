@@ -199,9 +199,13 @@
     <Compile Include="Migrations\201804021336173_InitialCreate.Designer.cs">
       <DependentUpon>201804021336173_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201804021538384_InitalizeAllModels.cs" />
-    <Compile Include="Migrations\201804021538384_InitalizeAllModels.Designer.cs">
-      <DependentUpon>201804021538384_InitalizeAllModels.cs</DependentUpon>
+    <Compile Include="Migrations\201804021704157_InitializeAllModels.cs" />
+    <Compile Include="Migrations\201804021704157_InitializeAllModels.Designer.cs">
+      <DependentUpon>201804021704157_InitializeAllModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804021707558_UpdateRoomStatus.cs" />
+    <Compile Include="Migrations\201804021707558_UpdateRoomStatus.Designer.cs">
+      <DependentUpon>201804021707558_UpdateRoomStatus.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -211,7 +215,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Reservation.cs" />
     <Compile Include="Models\Room.cs" />
-    <Compile Include="Models\RoomAvailability.cs" />
+    <Compile Include="Models\RoomStatus.cs" />
     <Compile Include="Models\RoomType.cs" />
     <Compile Include="Models\State.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -323,8 +327,11 @@
     <EmbeddedResource Include="Migrations\201804021336173_InitialCreate.resx">
       <DependentUpon>201804021336173_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804021538384_InitalizeAllModels.resx">
-      <DependentUpon>201804021538384_InitalizeAllModels.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201804021704157_InitializeAllModels.resx">
+      <DependentUpon>201804021704157_InitializeAllModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804021707558_UpdateRoomStatus.resx">
+      <DependentUpon>201804021707558_UpdateRoomStatus.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
