@@ -1,0 +1,35 @@
+﻿@model MyHotelApp.ViewModels.ReservationsByDateViewModel
+@{
+    ViewBag.Title = "ReservationsTable";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Reservations for @String.Format("{0: d/M/yyyy}", (Model.Reservations.FirstOrDefault().CheckIn))</h2>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Guest Name</th>
+            <th>Room Number</th>
+            <th>Check In Date</th>
+            <th>Check Out Date</th>
+            <th>Confirm Reservation</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var el in Model.Reservations)
+        {
+        <tr>
+
+            <td>@Model.GuestAccounts.FirstOrDefault(g => g.Id == el.GuestAccountId).Name</td>
+            <td>@el.RoomId</td>
+            <td>@String.Format("{0: d/M/yyyy}", el.CheckIn)</td>
+            <td>@String.Format("{0: d/M/yyyy}", el.CheckOut)</td>
+            <td> </td>
+        </tr>
+        }
+    </tbody>
+</table>

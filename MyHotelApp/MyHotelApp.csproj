@@ -250,8 +250,10 @@
     <Compile Include="ViewModels\GuestAccountViewModel.cs" />
     <Compile Include="ViewModels\NameHotelViewModel.cs" />
     <Compile Include="ViewModels\ReservationFormViewModel.cs" />
+    <Compile Include="ViewModels\ReservationsByDateViewModel.cs" />
     <Compile Include="ViewModels\RoomInfo.cs" />
     <Compile Include="ViewModels\RoomViewModel.cs" />
+    <Compile Include="ViewModels\SearchReservationsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\TwilioLogo.png" />
@@ -355,9 +357,11 @@
     <Content Include="Views\GuestMember\AccountDetailsForm.cshtml" />
     <Content Include="Views\GuestMember\Index.cshtml" />
     <Content Include="Views\GuestMember\NoAvailableRooms.cshtml" />
+    <Content Include="Views\Employee\SearchReservationsByDate.cshtml" />
+    <Content Include="Views\Employee\ReservationsTable.cshtml" />
+    <Content Include="Views\Employee\SeeAllReservationsTable.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\Employee\" />
     <Folder Include="Views\Guest\" />
   </ItemGroup>
   <ItemGroup>
