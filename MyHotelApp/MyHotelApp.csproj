@@ -219,10 +219,19 @@
     <Compile Include="Migrations\201804021931078_SeedStatusTable.Designer.cs">
       <DependentUpon>201804021931078_SeedStatusTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804031344407_InitializeAllModels2.cs" />
+    <Compile Include="Migrations\201804031344407_InitializeAllModels2.Designer.cs">
+      <DependentUpon>201804031344407_InitializeAllModels2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804031347011_PopulateStates.cs" />
+    <Compile Include="Migrations\201804031347011_PopulateStates.Designer.cs">
+      <DependentUpon>201804031347011_PopulateStates.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\GuestAccount.cs" />
     <Compile Include="Models\GuestReservationJunction.cs" />
+    <Compile Include="Models\HotelInfo.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Reservation.cs" />
@@ -358,6 +367,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804021931078_SeedStatusTable.resx">
       <DependentUpon>201804021931078_SeedStatusTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804031344407_InitializeAllModels2.resx">
+      <DependentUpon>201804031344407_InitializeAllModels2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804031347011_PopulateStates.resx">
+      <DependentUpon>201804031347011_PopulateStates.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
