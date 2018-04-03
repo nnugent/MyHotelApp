@@ -354,6 +354,7 @@
     <Content Include="Views\Home\MapTest.cshtml" />
     <Content Include="Views\GuestMember\AccountDetailsForm.cshtml" />
     <Content Include="Views\GuestMember\Index.cshtml" />
+    <Content Include="Views\GuestMember\NoAvailableRooms.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Employee\" />

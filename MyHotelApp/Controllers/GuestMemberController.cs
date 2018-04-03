@@ -8,6 +8,7 @@ using MyHotelApp.Models;
 using System.Data.Entity.Validation;
 using System.Data.Entity;
 using MyHotelApp.ViewModels;
+using System.Web.UI;
 
 
 namespace MyHotelApp.Controllers
@@ -54,6 +55,50 @@ namespace MyHotelApp.Controllers
                 Console.WriteLine(e);
             }
             return View("Index");
+        }
+
+        public ActionResult CheckAvailability()
+        {
+           
+            return View("ReservationForm");
+        }
+
+        public ActionResult ReservationForm()
+        {
+            var roomTypes = _context.RoomTypes.ToList();
+            var viewModel = new ReservationFormViewModel()
+            {
+                RoomTypes = roomTypes
+            };
+            return View("ReservationForm", viewModel);
+        }
+
+        public ActionResult SaveReservation(ReservationFormViewModel viewModel)
+        {
+            var userId = User.Identity.GetUserId();
+            var guestAccountId = _context.GuestAccounts.SingleOrDefault(a => a.UserId == userId).Id;
+            viewModel.Reservation.GuestAccountId = guestAccountId;
+            viewModel.Reservation.CheckIn = new DateTime(2018, Convert.ToInt32(viewModel.CheckInMonth), Convert.ToInt32(viewModel.CheckInDay), 16, 0, 0);
+            viewModel.Reservation.CheckOut = new DateTime(2018, Convert.ToInt32(viewModel.CheckOutMonth), Convert.ToInt32(viewModel.CheckOutDay), 11, 0, 0);
+            var roomId = _context.Rooms.FirstOrDefault(r => r.RoomTypeId == viewModel.Reservation.RoomTypeId).Id;
+            viewModel.Reservation.RoomId = roomId;
+            _context.Reservations.Add(viewModel.Reservation);
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (DbEntityValidationException e)
+            {
+                Console.WriteLine(e);
+            }
+
+
+            return View("Index");
+        }
+
+        public bool CheckAvailability(DateTime dateTime)
+        {
+            return true;
         }
 
 
