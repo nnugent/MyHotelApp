@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace MyHotelApp.Models
 {
@@ -28,7 +29,13 @@ namespace MyHotelApp.Models
         public string PhoneNumber { get; set; }
 
         public bool IsMember { get; set; }
+
        
+        [Required]
+        public string UserId { get; set; }
+
+       
+
 
     }
 }
