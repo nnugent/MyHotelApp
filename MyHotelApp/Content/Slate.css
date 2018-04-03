@@ -45,7 +45,22 @@ video {
     vertical-align: baseline;
 }
 
-    audio:not([controls]) {
+div.a p:last-child{
+    text-align: justify; /* For Edge */
+    text-align-last: right;
+}
+
+div.b {
+    text-align: justify; /* For Edge */
+    text-align-last: center;
+}
+
+div.c {
+    text-align: justify; /* For Edge */
+    text-align-last: justify;
+}
+
+audio:not([controls]) {
         display: none;
         height: 0;
     }

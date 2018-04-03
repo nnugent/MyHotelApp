@@ -192,6 +192,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MoreInfoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -310,6 +311,8 @@
     <Content Include="Scripts\umd\popper-utils.js.map" />
     <Content Include="Views\Shared\_Navbar.cshtml" />
     <Content Include="Views\CreateReservation\ReservationForm.cshtml" />
+    <Content Include="Views\MoreInfo\NotificationUpdates.cshtml" />
+    <Content Include="Views\MoreInfo\EasyBilling.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
