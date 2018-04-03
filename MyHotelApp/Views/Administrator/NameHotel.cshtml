@@ -1,0 +1,48 @@
+﻿@model MyHotelApp.ViewModels.NameHotelViewModel
+
+@{
+    /**/
+
+    ViewBag.Title = "NameHotel";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Name Your Hotel</h2>
+
+@using (Html.BeginForm("SaveHotelName", "Administrator"))
+{
+    <div class="form-group">
+        @Html.LabelFor(Model => Model.HotelInfo.Name)
+        @Html.TextBoxFor(Model => Model.HotelInfo.Name, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(Model => Model.HotelInfo.AddressLine1)
+        @Html.TextBoxFor(Model => Model.HotelInfo.AddressLine1, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(Model => Model.HotelInfo.AddressLine2)
+        @Html.TextBoxFor(Model => Model.HotelInfo.AddressLine2, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(Model => Model.HotelInfo.City)
+        @Html.TextBoxFor(Model => Model.HotelInfo.City, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(Model => Model.States)
+        @Html.DropDownListFor(Model => Model.HotelInfo.StateId, new SelectList(Model.States, "Id", "Name"), "Select State", new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(Model => Model.HotelInfo.ZipCode)
+        @Html.TextBoxFor(Model => Model.HotelInfo.ZipCode, new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+
+}
+
+@Html.ActionLink("Done", "HotelEntryForm", "Administrator", null, new { @class = "btn btn-primary" })

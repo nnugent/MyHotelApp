@@ -1,5 +1,9 @@
 ﻿using System;
+using System.IO;
+using System.Net;
+using System.Net.Http;
 using System.Collections.Generic;
+using System.Web.Helpers;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -40,15 +44,37 @@ namespace MyHotelApp.Controllers
             return View("CreateRoomType");
         }
 
+        public ActionResult SaveHotelName(NameHotelViewModel nameHotelViewModel)
+        {
+            var hotel = nameHotelViewModel.HotelInfo;
+            _context.HotelInfo.Add(hotel);
+
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (DbEntityValidationException e)
+            {
+                Console.WriteLine(e);
+            }
+
+            return View("HotelEntryForm");
+        }
+
+        public ActionResult HotelDetails()
+        {
+            return View("HotelDetails");
+        }
         public ActionResult Save(RoomType roomType)
         {
 
-            
 
-            if (roomType.Id == 0) {
+
+            if (roomType.Id == 0)
+            {
                 _context.RoomTypes.Add(roomType);
                 int i = 1;
-                while( i<= roomType.Quantity)
+                while (i <= roomType.Quantity)
                 {
                     Room room = new Room();
                     room.IsClean = true;
@@ -68,14 +94,15 @@ namespace MyHotelApp.Controllers
 
                 }
             }
-            else {
+            else
+            {
 
                 var roomTypeInDb = _context.RoomTypes.Single(r => r.Id == roomType.Id);
                 roomTypeInDb.Quantity = roomType.Quantity;
                 roomTypeInDb.Description = roomType.Description;
                 roomTypeInDb.Type = roomType.Type;
 
-                    }
+            }
             try
             {
                 _context.SaveChanges();
@@ -116,5 +143,44 @@ namespace MyHotelApp.Controllers
 
             return View("SeeAllRooms", viewmodel);
         }
+
+
+        public ActionResult HotelMap()
+        {
+            return View("HotelMap");
+        }
+
+        public ActionResult NameHotel()
+        {
+            var states = _context.States.ToList();
+            var viewModel = new NameHotelViewModel()
+            {
+                States = states
+            };
+            return View("NameHotel", viewModel);
+        }
+
+        //public ActionResult GeoCodeAddress()
+        //{
+        //    string strAddress = "Noida 201301, India";
+        //    String url = "http://maps.google.com/maps/api/geocode/xml?address=”+strAddress+”&sensor=false";
+
+
+        //    return View("HotelEntryForm");
+
+        //}
+
+        //public void GetLatLong(string address)
+        //{
+
+        //        string url = "http://maps.googleapis.com/maps/api/geocode/json?sensor=true&address=";
+
+        //        dynamic googleResults = new Uri(url + address).GetDynamicJsonObject();
+        //        foreach (var result in googleResults.results)
+        //        {
+        //            Console.WriteLine("[" + result.geometry.location.lat + "," + result.geometry.location.lng + "] " + result.formatted_address);
+        //        }
+
+        //}
     }
 }
