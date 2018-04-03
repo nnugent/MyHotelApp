@@ -21,6 +21,7 @@ namespace MyHotelApp.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<GuestAccount> GuestAccounts { get; set; }
+        public DbSet<HotelInfo> HotelInfo { get; set; }
         public DbSet<GuestReservationJunction> GuestReservationJunctions { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<Room> Rooms { get; set; }
