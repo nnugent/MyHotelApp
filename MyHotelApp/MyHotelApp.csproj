@@ -243,6 +243,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\AdministratorFormViewModel.cs" />
+    <Compile Include="ViewModels\NameHotelViewModel.cs" />
+    <Compile Include="ViewModels\ReservationFormViewModel.cs" />
     <Compile Include="ViewModels\RoomInfo.cs" />
     <Compile Include="ViewModels\RoomViewModel.cs" />
   </ItemGroup>
@@ -338,12 +340,15 @@
     <Content Include="Views\Administrator\HotelEntryForm.cshtml" />
     <Content Include="Views\Administrator\CreateRoomType.cshtml" />
     <Content Include="Views\Administrator\SeeAllRooms.cshtml" />
+    <Content Include="Views\Administrator\HotelDetails.cshtml" />
+    <Content Include="Views\Administrator\HotelMap.cshtml" />
+    <Content Include="Views\Administrator\NameHotel.cshtml" />
+    <Content Include="Views\Guest\ReservationForm.cshtml" />
+    <Content Include="Views\Guest\AccountDetailsForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Views\Employee\" />
     <Folder Include="Views\GuestMember\" />
-    <Folder Include="Views\Guest\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
