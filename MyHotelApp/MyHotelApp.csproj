@@ -223,6 +223,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\TwilioLogo.png" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Slate.css" />
@@ -314,9 +315,7 @@
     <Content Include="Views\MoreInfo\NotificationUpdates.cshtml" />
     <Content Include="Views\MoreInfo\EasyBilling.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
