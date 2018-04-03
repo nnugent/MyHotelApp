@@ -338,9 +338,10 @@
     <Content Include="Views\Administrator\HotelEntryForm.cshtml" />
     <Content Include="Views\Administrator\CreateRoomType.cshtml" />
     <Content Include="Views\Administrator\SeeAllRooms.cshtml" />
+    <Content Include="Views\MoreInfo\EasyBilling.cshtml" />
+    <Content Include="Views\MoreInfo\NotificationUpdates.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Views\Employee\" />
     <Folder Include="Views\GuestMember\" />
     <Folder Include="Views\Guest\" />
