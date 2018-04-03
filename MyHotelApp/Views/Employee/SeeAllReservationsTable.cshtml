@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "SeeAllReservationsTable";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Employee/_EmployeeLayout.cshtml";
 }
 
 
@@ -16,7 +16,9 @@
             <th>Room Number</th>
             <th>Check In Date</th>
             <th>Check Out Date</th>
-            <th>Confirm Reservation</th>
+            <th> Check in Guest</th>
+            <th>id</th>
+            <th>Checked in?</th>
 
 
         </tr>
@@ -24,14 +26,21 @@
     <tbody>
         @foreach (var el in Model.Reservations)
         {
-            <tr>
+        <tr>
 
-                <td>@Model.GuestAccounts.FirstOrDefault(g => g.Id == el.GuestAccountId).Name</td>
-                <td>@el.RoomId</td>
-                <td>@String.Format("{0: d/M/yyyy}", el.CheckIn)</td>
-                <td>@String.Format("{0: d/M/yyyy}", el.CheckOut)</td>
-                <td> </td>
-            </tr>
+            <td>@Model.GuestAccounts.FirstOrDefault(g => g.Id == el.GuestAccountId).Name</td>
+            <td>@el.RoomId</td>
+            <td>@String.Format("{0: M/d/yyyy}", el.CheckIn)</td>
+            <td>@String.Format("{0: M/d/yyyy}", el.CheckOut)</td>
+
+            <td>
+                @Html.ActionLink("Check In", "CheckInGuest", "Employee", new { id = el.Id }, new { @class = "btn btn-primary" })
+            </td>
+            <td>@el.Id</td>
+            <td>
+                @el.CheckedIn
+            </td>
+        </tr>
         }
     </tbody>
 </table>

@@ -1,7 +1,7 @@
 ﻿@model MyHotelApp.ViewModels.ReservationsByDateViewModel
 @{
     ViewBag.Title = "ReservationsTable";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Employee/_EmployeeLayout.cshtml";
 }
 
 
@@ -14,7 +14,8 @@
             <th>Room Number</th>
             <th>Check In Date</th>
             <th>Check Out Date</th>
-            <th>Confirm Reservation</th>
+            <th> Check in Guest</th>
+            <th>Checked in?</th>
 
 
         </tr>
@@ -28,7 +29,12 @@
             <td>@el.RoomId</td>
             <td>@String.Format("{0: d/M/yyyy}", el.CheckIn)</td>
             <td>@String.Format("{0: d/M/yyyy}", el.CheckOut)</td>
-            <td> </td>
+            <td>@if (el.CheckedIn == false)
+            { Html.ActionLink("Check In", "CheckInGuest", "Employee", null, new { @class = "btn btn-primary" }); };
+            </td>
+            <td>
+            @el.CheckedIn
+            </td>
         </tr>
         }
     </tbody>

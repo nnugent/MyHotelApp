@@ -360,6 +360,8 @@
     <Content Include="Views\Employee\SearchReservationsByDate.cshtml" />
     <Content Include="Views\Employee\ReservationsTable.cshtml" />
     <Content Include="Views\Employee\SeeAllReservationsTable.cshtml" />
+    <Content Include="Views\Employee\_EmployeeNavBar.cshtml" />
+    <Content Include="Views\Employee\_EmployeeLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Guest\" />

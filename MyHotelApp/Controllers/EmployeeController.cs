@@ -59,7 +59,33 @@ namespace MyHotelApp.Controllers
             return View();
         }
 
+        public ActionResult CheckInGuest(int? id)
+        {
 
+            var reservationInDb = _context.Reservations.FirstOrDefault(r => r.Id == id);
+            reservationInDb.CheckedIn = true;
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (DbEntityValidationException e)
+            {
+                Console.WriteLine(e);
+            }
+
+
+            //twilio logic!
+            var reservations = _context.Reservations.ToList();
+            var guests = _context.GuestAccounts.ToList();
+            var viewModel = new ReservationsByDateViewModel()
+            {
+                Reservations = reservations,
+                GuestAccounts = guests,
+            };
+
+
+            return View("SeeAllReservationsTable", viewModel);
+        }
 
     }
 }
