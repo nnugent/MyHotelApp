@@ -271,6 +271,7 @@
     <Compile Include="ViewModels\AdministratorFormViewModel.cs" />
     <Compile Include="ViewModels\GuestAccountViewModel.cs" />
     <Compile Include="ViewModels\NameHotelViewModel.cs" />
+    <Compile Include="ViewModels\ReservationDetailsViewModel.cs" />
     <Compile Include="ViewModels\ReservationFormViewModel.cs" />
     <Compile Include="ViewModels\ReservationsByDateViewModel.cs" />
     <Compile Include="ViewModels\RoomInfo.cs" />
@@ -385,6 +386,8 @@
     <Content Include="Views\Employee\_EmployeeNavBar.cshtml" />
     <Content Include="Views\Employee\_EmployeeLayout.cshtml" />
     <Content Include="Views\Employee\SeeAllRooms.cshtml" />
+    <Content Include="Views\Employee\SeeReservationDetails.cshtml" />
+    <Content Include="Views\Employee\EditReservation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Email\" />

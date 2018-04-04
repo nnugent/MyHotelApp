@@ -12,18 +12,21 @@
 <table class="table table-bordered table-hover">
     <thead>
         <tr>
+            <th>See Details</th>
             <th>Guest Name</th>
             <th>Room Number</th>
             <th>Check In Date</th>
             <th>Check Out Date</th>
             <th>Status</th>
             <th>Change Status</th>
+            
         </tr>
     </thead>
     <tbody>
         @foreach (var el in Model.Reservations)
         {
         <tr>
+            <td>@Html.ActionLink("See Details", "SeeReservationDetails", "Employee", new { id = el.Id }, new {@class = "btn btn-primary" })</td>
 
             <td>@Model.GuestAccounts.FirstOrDefault(g => g.Id == el.GuestAccountId).Name</td>
             <td>@el.RoomId</td>

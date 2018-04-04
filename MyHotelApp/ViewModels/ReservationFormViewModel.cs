@@ -12,7 +12,7 @@ namespace MyHotelApp.ViewModels
         public Reservation Reservation { get; set; }
         public GuestReservationJunction GuestReservationJunction {get; set;}
         public List<RoomType> RoomTypes { get; set; }
-
+        public GuestAccount GuestAccount { get; set; }
         public string CheckInDay { get; set; }
         public string CheckInMonth { get; set; }
         public string CheckOutDay { get; set; }

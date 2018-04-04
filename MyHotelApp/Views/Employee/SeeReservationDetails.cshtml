@@ -1,0 +1,68 @@
+﻿@model MyHotelApp.ViewModels.ReservationDetailsViewModel
+@{
+    ViewBag.Title = "SeeReservationDetails";
+    Layout = "~/Views/Employee/_EmployeeLayout.cshtml";
+}
+
+<h2>Reservation Details</h2>
+<h3>Guest Info</h3>
+<ul>
+    <li>
+        Name:
+        @Model.GuestAccount.Name </ li >
+        @if (Model.GuestAccount.IsMember == true)
+        {
+        <li>Has a membership</li>
+    }
+        <li>Email: @Model.Email</li>
+        <li>Phone number: @Model.GuestAccount.PhoneNumber</li>
+        @if (Model.Reservation.CheckedIn == true)
+        {
+            <li>Guest Status: Checked in to room</li>
+        }
+        else
+        {
+            <li>Guest Status: Not checked in</li>
+        }
+    </ul>
+    <p></p>
+    <h3>Reservation</h3>
+    <ul>
+
+        <li>Check In Date: @Model.Reservation.CheckIn</li>
+        <li>
+            Check Out Date:
+            @Model.Reservation.CheckOut
+        </li>
+        <li>Room Number: @Model.Room.Id</li>
+        <li>Room Type: @Model.RoomType.Type </li>
+        <li>Room Description @Model.RoomType.Description</li>
+    </ul>
+
+    <h3>Room Status</h3>
+    <ul>
+
+        @if (Model.Room.IsClean == true)
+        {
+            <li>Clean</li>
+        }
+        else
+        {
+            <li>Dirty</li>
+        }
+
+
+        @if (Model.RoomStatus.Id == 3)
+        {
+            <li>Occupied</li>
+        }
+        else
+        {
+            <li>Vacant</li>
+        }
+
+    </ul>
+
+    @Html.ActionLink("Edit Reservation", "EditReservation", "Employee", new {id = Model.Reservation.Id }, new { @class = "btn btn-primary" })
+
+

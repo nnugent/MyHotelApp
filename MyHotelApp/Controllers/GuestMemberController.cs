@@ -73,6 +73,26 @@ namespace MyHotelApp.Controllers
             return View("ReservationForm", viewModel);
         }
 
+        public ActionResult Edit(int id)
+        {
+            var roomTypes = _context.RoomTypes.ToList();
+            var reservation = _context.Reservations.FirstOrDefault(r => r.Id == id);
+            var checkInMonth = Convert.ToString(reservation.CheckIn.Month);
+            var checkInDay = Convert.ToString(reservation.CheckIn.Day);
+            var checkOutMonth = Convert.ToString(reservation.CheckOut.Month);
+            var checkOutDay = Convert.ToString(reservation.CheckOut.Day);
+            var viewModel = new ReservationFormViewModel()
+            {
+                RoomTypes = roomTypes,
+                Reservation = reservation,
+                CheckInMonth = checkInMonth,
+                CheckInDay= checkInDay,
+                CheckOutMonth = checkOutMonth,
+                CheckOutDay = checkOutDay
+
+            };
+            return View("ReservationForm", viewModel);
+        }
         public ActionResult SaveReservation(ReservationFormViewModel viewModel)
         {
             var userId = User.Identity.GetUserId();

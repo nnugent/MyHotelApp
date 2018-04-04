@@ -198,11 +198,54 @@ namespace MyHotelApp.Controllers
             return View("SeeAllReservationsTable", viewModel);
         }
 
+        public ActionResult EditReservation(int? id)
+        {
+            var roomTypes = _context.RoomTypes.ToList();
+            var reservation = _context.Reservations.FirstOrDefault(r => r.Id == id);
+            var checkInMonth = Convert.ToString(reservation.CheckIn.Month);
+            var checkInDay = Convert.ToString(reservation.CheckIn.Day);
+            var checkOutMonth = Convert.ToString(reservation.CheckOut.Month);
+            var checkOutDay = Convert.ToString(reservation.CheckOut.Day);
+            var guestAccount = _context.GuestAccounts.FirstOrDefault(g => g.Id == reservation.GuestAccountId);
+            var viewModel = new ReservationFormViewModel()
+            {
+                RoomTypes = roomTypes,
+                Reservation = reservation,
+                CheckInMonth = checkInMonth,
+                CheckInDay = checkInDay,
+                CheckOutMonth = checkOutMonth,
+                CheckOutDay = checkOutDay,
+                GuestAccount = guestAccount
+
+            };
+            return View("EditReservation", viewModel);
+        }
+        public ActionResult SeeReservationDetails(int? id)
+        {
+            var reservation = _context.Reservations.FirstOrDefault(r => r.Id == id);
+            var guestAccount = _context.GuestAccounts.FirstOrDefault(g => g.Id == reservation.GuestAccountId);
+            var room = _context.Rooms.FirstOrDefault(r => r.Id == reservation.RoomId);
+            var roomType = _context.RoomTypes.FirstOrDefault(t => t.Id == room.RoomTypeId);
+            var roomStatus = _context.RoomStatuses.FirstOrDefault(s => s.Id == room.RoomStatusId);
+            var email = _context.Users.FirstOrDefault(u => u.Id == guestAccount.UserId).UserName;
+            var viewModel = new ReservationDetailsViewModel()
+            {
+                Reservation = reservation,
+                GuestAccount = guestAccount,
+                Room = room,
+                RoomType = roomType,
+                RoomStatus = roomStatus,
+                Email = email
+            };
+            return View("SeeReservationDetails", viewModel);
+        }
 
         public ActionResult CheckOutGuest (int id)
         {
             var reservationInDb = _context.Reservations.FirstOrDefault(r => r.Id == id);
             reservationInDb.CheckedIn = false;
+            var roomInDb = _context.Rooms.FirstOrDefault(r => r.Id == reservationInDb.RoomId);
+            roomInDb.RoomStatusId = 2;
             try
             {
                 _context.SaveChanges();
