@@ -8,7 +8,7 @@
 *.user
 *.userosscache
 *.sln.docstates
-*Keys.cs
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
@@ -48,6 +48,7 @@ project.fragment.lock.json
 artifacts/
 **/Properties/launchSettings.json
 
+
 *_i.c
 *_p.c
 *_i.h
@@ -72,6 +73,7 @@ artifacts/
 *.pidb
 *.svclog
 *.scc
+Keys.cs
 
 # Chutzpah Test files
 _Chutzpah*

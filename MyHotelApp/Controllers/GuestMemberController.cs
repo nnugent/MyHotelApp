@@ -91,7 +91,9 @@ namespace MyHotelApp.Controllers
             {
                 Console.WriteLine(e);
             }
-
+            string message = "Your reservation was successful.";
+            var controller = new SmsController();
+            controller.SendEmail(message, "stephanie.glyzewski@gmail.com");
 
             return View("Index");
         }

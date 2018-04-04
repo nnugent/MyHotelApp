@@ -1,0 +1,72 @@
+﻿
+@model MyHotelApp.ViewModels.RoomViewModel
+
+@{
+    ViewBag.Title = "SeeAllRooms";
+    Layout = "~/Views/Employee/_EmployeeLayout.cshtml";
+}
+
+<h2>Rooms</h2>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Room Number</th>
+            <th>Room Type</th>
+            <th>Cleanliness</th>
+            <th>Change Cleanliness</th>
+            <th>Status</th>
+            <th>Change Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var el in Model.RoomInfoList)
+        {
+        <tr>
+            <td>@el.Room.Id</td>
+            <td>@el.RoomType</td>
+
+            @if (el.Room.IsClean == false)
+            {
+        
+                <td>Dirty</td>
+                <td>
+            
+            @Html.ActionLink("Mark as Clean", "MarkRoomAsClean", "Employee", new { id = el.Room.Id }, new { @class = "btn btn-primary" })
+        </td> }
+            else
+            {
+        <td>Clean</td>
+                <td>
+          
+            @Html.ActionLink("Mark As Dirty", "MarkRoomAsDirty", "Employee", new { id = el.Room.Id }, new { @class = "btn btn-primary" })
+        </td>}
+
+
+
+            @if (el.RoomStatus == "occupied")
+
+            {
+                <td>Occupied</td>
+        <td>
+           
+            @Html.ActionLink("Mark As Empty", "MarkAsEmpty", "Employee", new { id = el.Room.Id }, new { @class = "btn btn-primary" })
+
+        </td>}
+
+            else
+            {
+                <td>Not Occupied</td>
+        <td>
+           
+            @Html.ActionLink("Mark As Occupied", "MarkAsOccupied", "Employee", new { id = el.Room.Id }, new { @class = "btn btn-primary" })
+
+        </td>}
+
+          
+        </tr>
+        }
+    </tbody>
+       
+</table>
+

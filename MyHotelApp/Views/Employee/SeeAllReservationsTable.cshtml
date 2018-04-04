@@ -16,11 +16,8 @@
             <th>Room Number</th>
             <th>Check In Date</th>
             <th>Check Out Date</th>
-            <th> Check in Guest</th>
-            <th>id</th>
-            <th>Checked in?</th>
-
-
+            <th>Status</th>
+            <th>Change Status</th>
         </tr>
     </thead>
     <tbody>
@@ -33,14 +30,33 @@
             <td>@String.Format("{0: M/d/yyyy}", el.CheckIn)</td>
             <td>@String.Format("{0: M/d/yyyy}", el.CheckOut)</td>
 
-            <td>
-                @Html.ActionLink("Check In", "CheckInGuest", "Employee", new { id = el.Id }, new { @class = "btn btn-primary" })
-            </td>
-            <td>@el.Id</td>
-            <td>
-                @el.CheckedIn
-            </td>
+            @if (el.CheckedIn == true)
+    {
+        <td>
+            Checked In
+        </td>
+}
+
+else
+{
+        <td>Not Checked In</td>
+}
+
+
+            @if (el.CheckedIn == false)
+    {
+        <td>
+            @Html.ActionLink("Check In", "CheckInGuest", "Employee", new { id = el.Id }, new { @class = "btn btn-primary" })
+        </td>
+}
+else
+{
+        <td>
+            @Html.ActionLink("Check Out", "CheckOutGuest", "Employee", new { id = el.Id }, new { @class = "btn btn-primary" })
+        </td>
+}
         </tr>
         }
-    </tbody>
+            </tbody>
+        
 </table>
