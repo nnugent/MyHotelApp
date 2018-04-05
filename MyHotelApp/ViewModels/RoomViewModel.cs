@@ -13,5 +13,7 @@ namespace MyHotelApp.ViewModels
        //public RoomType RoomType { get; set; }
        //public RoomStatus RoomStatus { get; set; }
 
+        public DateTime CheckInDate { get; set; }
+
     }
 }

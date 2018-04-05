@@ -210,7 +210,6 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdministratorController.cs" />
-    <Compile Include="Controllers\DatePickerController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\GuestController.cs" />
     <Compile Include="Controllers\GuestMemberController.cs" />
@@ -255,6 +254,22 @@
     <Compile Include="Migrations\201804031607284_InitializeAllModels3.Designer.cs">
       <DependentUpon>201804031607284_InitializeAllModels3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804051833083_AddCostColumn.cs" />
+    <Compile Include="Migrations\201804051833083_AddCostColumn.Designer.cs">
+      <DependentUpon>201804051833083_AddCostColumn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804051834572_AddCostColumn1.cs" />
+    <Compile Include="Migrations\201804051834572_AddCostColumn1.Designer.cs">
+      <DependentUpon>201804051834572_AddCostColumn1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804051839110_AddCostToRoomStatus.cs" />
+    <Compile Include="Migrations\201804051839110_AddCostToRoomStatus.Designer.cs">
+      <DependentUpon>201804051839110_AddCostToRoomStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804051845318_InitializeAllModels4.cs" />
+    <Compile Include="Migrations\201804051845318_InitializeAllModels4.Designer.cs">
+      <DependentUpon>201804051845318_InitializeAllModels4.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\GuestAccount.cs" />
@@ -281,8 +296,7 @@
     <Compile Include="ViewModels\SearchReservationsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Images\StripeLogo.png" />
-    <Content Include="Images\TwilioLogo.png" />
+    <Content Include="App_Data\TwilioLogo.png" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Slate.css" />
@@ -436,12 +450,11 @@
     <Content Include="Views\Employee\SeeReservationDetails.cshtml" />
     <Content Include="Views\Employee\EditReservation.cshtml" />
     <Content Include="Views\DatePicker\Index.cshtml" />
-    <Content Include="Views\Administrator\AdministratorHome.cshtml" />
     <Content Include="Views\Administrator\_AdminNavBar.cshtml" />
-    <Content Include="Views\Shared\_GuestNavbar.cshtml" />
+    <Content Include="Views\Administrator\AdministratorHome.cshtml" />
+    <Content Include="Views\Employee\AvailableRoomsOnGivenDate.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Views\Email\" />
     <Folder Include="Views\Guest\" />
     <Folder Include="Views\SendEmail\" />
@@ -479,6 +492,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804031607284_InitializeAllModels3.resx">
       <DependentUpon>201804031607284_InitializeAllModels3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804051833083_AddCostColumn.resx">
+      <DependentUpon>201804051833083_AddCostColumn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804051834572_AddCostColumn1.resx">
+      <DependentUpon>201804051834572_AddCostColumn1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804051839110_AddCostToRoomStatus.resx">
+      <DependentUpon>201804051839110_AddCostToRoomStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804051845318_InitializeAllModels4.resx">
+      <DependentUpon>201804051845318_InitializeAllModels4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
