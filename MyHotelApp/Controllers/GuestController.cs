@@ -15,7 +15,7 @@ namespace MyHotelApp.Controllers
         
         
         // GET: Guest
-        public ActionResult Index()
+        public ActionResult ReservationForm()
         {
             return View();
         }

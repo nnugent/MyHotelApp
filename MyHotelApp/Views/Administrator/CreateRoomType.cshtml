@@ -24,12 +24,8 @@
         @Html.TextBoxFor(Model => Model.Description, new { @class = "form-control" })
     </div>
 
-
-
     <button type="submit" class="btn btn-primary">Save</button>
-
+    @Html.ActionLink("Done", "HotelEntryForm", "Administrator", null, new { @class = "btn btn-primary" })
 }
-
-@Html.ActionLink("Done", "HotelEntryForm", "Administrator", null, new { @class = "btn btn-primary" })
 
 

@@ -160,6 +160,11 @@ namespace MyHotelApp.Controllers
             return View("NameHotel", viewModel);
         }
 
+        public ActionResult AdministratorHome()
+        {
+            return View();
+        }
+
         //public ActionResult GeoCodeAddress()
         //{
         //    string strAddress = "Noida 201301, India";

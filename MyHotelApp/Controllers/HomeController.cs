@@ -4,15 +4,19 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
+using MyHotelApp.Models;
+using MyHotelApp.ViewModels;
 
 namespace MyHotelApp.Controllers
 {
+    [AllowAnonymous]
     public class HomeController : Controller
     {
         public ActionResult Index()
         {
             return View();
         }
+
         public ActionResult MapTest()
         {
             return View();
