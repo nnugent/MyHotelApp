@@ -11,7 +11,14 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                @if (User.IsInRole("CanAdministrate"))
+                {
+                    <li>@Html.ActionLink("MyHome", "AdministratorHome", "Administrator")</li>
+                }
+                else
+                {
+                    <li>@Html.ActionLink("MyHome","Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+                }
                 <li>@Html.ActionLink("About", "About", "Home")</li>
                 <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
             </ul>

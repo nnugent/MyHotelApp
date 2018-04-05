@@ -347,6 +347,7 @@
     <Content Include="Views\Administrator\NameHotel.cshtml" />
     <Content Include="Views\Guest\ReservationForm.cshtml" />
     <Content Include="Views\Home\MapTest.cshtml" />
+    <Content Include="Views\Administrator\AdministratorHome.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Employee\" />

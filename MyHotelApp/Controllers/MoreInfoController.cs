@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace MyHotelApp.Controllers
 {
+    [AllowAnonymous]
     public class MoreInfoController : Controller
     {
         public ViewResult NotificationUpdates()
