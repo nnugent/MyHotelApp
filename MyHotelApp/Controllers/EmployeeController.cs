@@ -18,6 +18,7 @@ using MyHotelApp.Controllers;
 
 namespace MyHotelApp.Controllers
 {
+    [Authorize(Order = 1, Roles = "CanAdministrate, Employee")]
     public class EmployeeController : Controller
     {
         private ApplicationDbContext _context; 

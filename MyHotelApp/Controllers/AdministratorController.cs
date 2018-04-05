@@ -15,6 +15,7 @@ using MyHotelApp.ViewModels;
 
 namespace MyHotelApp.Controllers
 {
+    [Authorize(Roles = "CanAdministrate")]
     public class AdministratorController : Controller
     {
         private ApplicationDbContext _context;
