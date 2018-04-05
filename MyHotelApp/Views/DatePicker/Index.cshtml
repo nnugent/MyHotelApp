@@ -1,0 +1,30 @@
+﻿@model MyHotelApp.ViewModels.DatePickerViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm())
+{
+    <br/>
+    @Html.EditorFor(model => model.dtmDate, new { htmlAttributes = new {@class="datepicker"}})
+  
+}
+
+<link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+@section scripts{
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script>
+        $(function () {
+            $(".datepicker").datepicker({
+                dateFormat: "yy-mm-dd",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "2018:2020"
+            });
+            
+        });
+    </script>
+}

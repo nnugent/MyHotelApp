@@ -28,7 +28,14 @@
             <tr>
                 <td>@Html.ActionLink("See Details", "SeeReservationDetails", "Employee", new { id = el.Id }, new { @class = "btn btn-primary" })</td>
 
-                <td>@Model.GuestAccounts.FirstOrDefault(g => g.Id == el.GuestAccountId).Name</td>
+                @if (el.GuestAccountId != null)
+                {
+                    <td>@Model.GuestAccounts.FirstOrDefault(g => g.Id == el.GuestAccountId).Name</td>
+                }
+                else
+                {
+                    <td>No associated name</td>
+                }
                 <td>@el.RoomId</td>
                 <td>@String.Format("{0: M/d/yyyy}", el.CheckIn)</td>
                 <td>@String.Format("{0: M/d/yyyy}", el.CheckOut)</td>
@@ -64,4 +71,37 @@
 
 </table>
 
-@Html.Partial("SearchReservationsByDate", Model.SearchReservationsViewModel)
+<h2>See Reservations For a Given Date</h2>
+
+@using (Html.BeginForm("SeeReservations", "Employee"))
+{
+    <div class="form-group">
+        @Html.LabelFor(Model => Model.SearchReservationsViewModel.CheckInDate)
+        @Html.EditorFor(Model => Model.SearchReservationsViewModel.CheckInDate, new { htmlAttributes = new { @class = "datepicker" } })
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">See All Reservations</button>
+
+}
+
+
+<link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+
+
+@section scripts{
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script>
+        $(function () {
+            $(".datepicker").datepicker({
+                dateFormat: "yy-mm-dd",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "2018:2020"
+            });
+
+        });
+    </script>
+}
+
+@*@Html.Partial("SearchReservationsByDate", Model.SearchReservationsViewModel)*@

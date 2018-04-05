@@ -5,8 +5,8 @@ using System.Web;
 
 namespace MyHotelApp.ViewModels
 {
-    public class SearchReservationsViewModel
+    public class DatePickerViewModel
     {
-        public DateTime CheckInDate { get; set; }
+      public DateTime dtmDate { get; set; }
     }
 }

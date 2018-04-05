@@ -31,18 +31,18 @@ namespace MyHotelApp.Controllers
             return View();
         }
       
-        public ActionResult SeeReservations (SearchReservationsViewModel checkInDate)
+        public ActionResult SeeReservations (ReservationsByDateViewModel checkInDate)
         {
-            var date = new DateTime(2018, checkInDate.CheckInMonth, checkInDate.CheckInDay, 16, 0, 0);
-
+            var checkin = checkInDate.SearchReservationsViewModel.CheckInDate;
+            var date = new DateTime(checkin.Year, checkin.Month, checkin.Day, 16, 0, 0);
             var reservations = _context.Reservations.Where(r => r.CheckIn == date).ToList();
             var guests = _context.GuestAccounts.ToList();
             var viewModel = new ReservationsByDateViewModel()
             {
                 Reservations = reservations,
-                GuestAccounts = guests,
+                GuestAccounts = guests
             };
-            return View("ReservationsTable", viewModel);
+            return View("SeeAllReservationsTable", viewModel);
         }
 
 
@@ -51,16 +51,20 @@ namespace MyHotelApp.Controllers
 
             var reservations = _context.Reservations.ToList();
             var guests = _context.GuestAccounts.ToList();
+
             var viewModel = new ReservationsByDateViewModel()
             {
                 Reservations = reservations,
-                GuestAccounts = guests,
+                GuestAccounts = guests
             };
             return View("SeeAllReservationsTable", viewModel);
         }
+
+
         public ActionResult SearchReservationsByDate()
         {
             var viewModel = new SearchReservationsViewModel();
+
             return PartialView("SearchReservationsByDate", viewModel);
         }
 
@@ -199,24 +203,52 @@ namespace MyHotelApp.Controllers
             return View("SeeAllReservationsTable", viewModel);
         }
 
+        public ActionResult SaveReservation(ReservationFormViewModel viewModel)
+        {
+           
+            
+            var checkin = viewModel.Reservation.CheckIn;
+            var checkout = viewModel.Reservation.CheckOut;
+            viewModel.Reservation.CheckIn = new DateTime(checkin.Year, checkin.Month, checkin.Day, 16, 0, 0);
+            viewModel.Reservation.CheckOut = new DateTime(checkout.Year, checkout.Month, checkout.Day, 11, 0, 0);
+            var roomId = _context.Rooms.FirstOrDefault(r => r.RoomTypeId == viewModel.Reservation.RoomTypeId).Id;
+            viewModel.Reservation.RoomId = roomId;
+            _context.Reservations.Add(viewModel.Reservation);
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (DbEntityValidationException e)
+            {
+                Console.WriteLine(e);
+            }
+
+
+            var reservations = _context.Reservations.ToList();
+            var guests = _context.GuestAccounts.ToList();
+            var newViewModel = new ReservationsByDateViewModel()
+            {
+                Reservations = reservations,
+                GuestAccounts = guests,
+            };
+
+
+            return View("SeeAllReservationsTable", newViewModel);
+        }
+
+
+
         public ActionResult EditReservation(int? id)
         {
             var roomTypes = _context.RoomTypes.ToList();
             var reservation = _context.Reservations.FirstOrDefault(r => r.Id == id);
-            var checkInMonth = Convert.ToString(reservation.CheckIn.Month);
-            var checkInDay = Convert.ToString(reservation.CheckIn.Day);
-            var checkOutMonth = Convert.ToString(reservation.CheckOut.Month);
-            var checkOutDay = Convert.ToString(reservation.CheckOut.Day);
             var guestAccount = _context.GuestAccounts.FirstOrDefault(g => g.Id == reservation.GuestAccountId);
             var viewModel = new ReservationFormViewModel()
             {
                 RoomTypes = roomTypes,
                 Reservation = reservation,
-                CheckInMonth = checkInMonth,
-                CheckInDay = checkInDay,
-                CheckOutMonth = checkOutMonth,
-                CheckOutDay = checkOutDay,
                 GuestAccount = guestAccount
+                
 
             };
             return View("EditReservation", viewModel);
@@ -224,7 +256,9 @@ namespace MyHotelApp.Controllers
         public ActionResult SeeReservationDetails(int? id)
         {
             var reservation = _context.Reservations.FirstOrDefault(r => r.Id == id);
+            
             var guestAccount = _context.GuestAccounts.FirstOrDefault(g => g.Id == reservation.GuestAccountId);
+           
             var room = _context.Rooms.FirstOrDefault(r => r.Id == reservation.RoomId);
             var roomType = _context.RoomTypes.FirstOrDefault(t => t.Id == room.RoomTypeId);
             var roomStatus = _context.RoomStatuses.FirstOrDefault(s => s.Id == room.RoomStatusId);

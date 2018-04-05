@@ -85,10 +85,7 @@ namespace MyHotelApp.Controllers
             {
                 RoomTypes = roomTypes,
                 Reservation = reservation,
-                CheckInMonth = checkInMonth,
-                CheckInDay= checkInDay,
-                CheckOutMonth = checkOutMonth,
-                CheckOutDay = checkOutDay
+              
 
             };
             return View("ReservationForm", viewModel);
@@ -98,8 +95,10 @@ namespace MyHotelApp.Controllers
             var userId = User.Identity.GetUserId();
             var guestAccountId = _context.GuestAccounts.SingleOrDefault(a => a.UserId == userId).Id;
             viewModel.Reservation.GuestAccountId = guestAccountId;
-            viewModel.Reservation.CheckIn = new DateTime(2018, Convert.ToInt32(viewModel.CheckInMonth), Convert.ToInt32(viewModel.CheckInDay), 16, 0, 0);
-            viewModel.Reservation.CheckOut = new DateTime(2018, Convert.ToInt32(viewModel.CheckOutMonth), Convert.ToInt32(viewModel.CheckOutDay), 11, 0, 0);
+            var checkin = viewModel.CheckInDateTime;
+            var checkout = viewModel.CheckOutDateTime;
+            viewModel.Reservation.CheckIn = new DateTime(checkin.Year, checkin.Month, checkin.Day, 16, 0, 0);
+            viewModel.Reservation.CheckOut = new DateTime(checkout.Year, checkout.Month, checkout.Day, 11, 0, 0);
             var roomId = _context.Rooms.FirstOrDefault(r => r.RoomTypeId == viewModel.Reservation.RoomTypeId).Id;
             viewModel.Reservation.RoomId = roomId;
             _context.Reservations.Add(viewModel.Reservation);
