@@ -435,6 +435,9 @@
     <Content Include="Views\Employee\SeeReservationDetails.cshtml" />
     <Content Include="Views\Employee\EditReservation.cshtml" />
     <Content Include="Views\DatePicker\Index.cshtml" />
+    <Content Include="Views\Administrator\AdministratorHome.cshtml" />
+    <Content Include="Views\Administrator\_AdminNavBar.cshtml" />
+    <Content Include="Views\Shared\_GuestNavbar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Email\" />

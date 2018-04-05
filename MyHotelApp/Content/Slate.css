@@ -3790,7 +3790,8 @@ select[multiple].input-lg {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    width: 100%;
+    width: 200px;
+    height: 20px;
 }
 
     .btn:focus,
