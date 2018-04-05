@@ -88,6 +88,55 @@ namespace MyHotelApp.Controllers
             return RedirectToAction("SeeAllRooms");
         }
 
+        public ActionResult SeeAvailableRooms(RoomViewModel view)
+        {
+
+            var checkin = view.CheckInDate;
+            checkin.AddHours(11);
+            var reservations = _context.Reservations.Where(r => r.CheckIn == checkin).ToList();
+
+            //var rooms = _context.Rooms.Where(r => !reservations.Contains(r.Id));
+            //var rooms = _context.Rooms.Remove((re => re).Where(reservations.Where(r => r.RoomId == re.Id))).ToList();
+            var rooms = _context.Rooms.ToList();
+            foreach(var el in rooms)
+            {
+                foreach(var re in reservations)
+                {
+                    if (re.RoomId == el.Id)
+                    {
+                        rooms.Remove(el);
+                    }
+                }
+
+            }
+            var viewmodel = new RoomViewModel();
+            List<RoomInfo> list = new List<RoomInfo>();
+            foreach (var el in rooms)
+            {
+
+                var roomtype = _context.RoomTypes.SingleOrDefault(t => t.Id == el.RoomTypeId);
+                string type = roomtype.Type;
+                var roomstatus = _context.RoomStatuses.SingleOrDefault(s => s.Id == el.RoomStatusId);
+                string status = roomstatus.StatusName;
+                var info = new RoomInfo()
+                {
+                    Room = el,
+                    RoomType = type,
+                    RoomStatus = status
+                };
+
+                list.Add(info);
+            }
+
+            var roomStatusList = _context.RoomStatuses.ToList();
+            var viewModel = new RoomViewModel()
+            {
+                RoomInfoList = list,
+
+
+            };
+            return View("SeeAllRooms", viewModel);
+        }
         public ActionResult MarkAsOccupied(int? id)
         {
             var roomInDb = _context.Rooms.FirstOrDefault(r => r.Id == id);
@@ -140,8 +189,6 @@ namespace MyHotelApp.Controllers
 
                 list.Add(info);
             }
-
-
             var roomStatusList = _context.RoomStatuses.ToList();
             var viewModel = new RoomViewModel()
             {
@@ -150,9 +197,37 @@ namespace MyHotelApp.Controllers
 
             };
             return View("SeeAllRooms", viewModel);
-
-            
         }
+
+        //public ActionResult SeeAllRooms(List<Room> rooms)
+        //{
+        //    List<RoomInfo> list = new List<RoomInfo>();
+        //    foreach (var el in rooms)
+        //    {
+        //        var roomtype = _context.RoomTypes.SingleOrDefault(t => t.Id == el.RoomTypeId);
+        //        string type = roomtype.Type;
+        //        var roomstatus = _context.RoomStatuses.SingleOrDefault(s => s.Id == el.RoomStatusId);
+        //        string status = roomstatus.StatusName;
+        //        var info = new RoomInfo()
+        //        {
+        //            Room = el,
+        //            RoomType = type,
+        //            RoomStatus = status
+        //        };
+
+        //        list.Add(info);
+        //    }
+        //    var roomStatusList = _context.RoomStatuses.ToList();
+        //    var viewModel = new RoomViewModel()
+        //    {
+        //        RoomInfoList = list,
+
+
+        //    };
+        //    return View("SeeAllRooms", viewModel);
+        //}
+
+
 
         public ActionResult MarkRoomAsDirty(int? id)
         {

@@ -68,7 +68,7 @@ namespace MyHotelApp.Controllers
         public ActionResult Save(RoomType roomType)
         {
 
-
+            roomType.Cost = Convert.ToDouble(roomType.Cost);
 
             if (roomType.Id == 0)
             {
@@ -79,6 +79,7 @@ namespace MyHotelApp.Controllers
                     Room room = new Room();
                     room.IsClean = true;
                     room.RoomStatusId = 2;
+
                     room.RoomTypeId = roomType.Id;
                     _context.Rooms.Add(room);
                     try

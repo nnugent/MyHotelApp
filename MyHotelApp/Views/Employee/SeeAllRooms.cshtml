@@ -20,53 +20,86 @@
         </tr>
     </thead>
     <tbody>
+
         @foreach (var el in Model.RoomInfoList)
         {
-        <tr>
-            <td>@el.Room.Id</td>
-            <td>@el.RoomType</td>
+            <tr>
+                <td>@el.Room.Id</td>
+                <td>@el.RoomType</td>
 
-            @if (el.Room.IsClean == false)
-            {
-        
-                <td>Dirty</td>
-                <td>
-            
-            @Html.ActionLink("Mark as Clean", "MarkRoomAsClean", "Employee", new { id = el.Room.Id }, new { @class = "btn btn-primary" })
-        </td> }
-            else
-            {
-        <td>Clean</td>
-                <td>
-          
-            @Html.ActionLink("Mark As Dirty", "MarkRoomAsDirty", "Employee", new { id = el.Room.Id }, new { @class = "btn btn-primary" })
-        </td>}
+                @if (el.Room.IsClean == false)
+                {
+
+                    <td>Dirty</td>
+                    <td>
+
+                        @Html.ActionLink("Mark as Clean", "MarkRoomAsClean", "Employee", new { id = el.Room.Id }, new { @class = "btn btn-primary" })
+                    </td> }
+                else
+                {
+                    <td>Clean</td>
+                    <td>
+
+                        @Html.ActionLink("Mark As Dirty", "MarkRoomAsDirty", "Employee", new { id = el.Room.Id }, new { @class = "btn btn-primary" })
+                    </td>}
 
 
 
-            @if (el.RoomStatus == "occupied")
+                @if (el.RoomStatus == "occupied")
 
-            {
-                <td>Occupied</td>
-        <td>
-           
-            @Html.ActionLink("Mark As Empty", "MarkAsEmpty", "Employee", new { id = el.Room.Id }, new { @class = "btn btn-primary" })
+                {
+                    <td>Occupied</td>
+                    <td>
 
-        </td>}
+                        @Html.ActionLink("Mark As Empty", "MarkAsEmpty", "Employee", new { id = el.Room.Id }, new { @class = "btn btn-primary" })
 
-            else
-            {
-                <td>Not Occupied</td>
-        <td>
-           
-            @Html.ActionLink("Mark As Occupied", "MarkAsOccupied", "Employee", new { id = el.Room.Id }, new { @class = "btn btn-primary" })
+                    </td>}
 
-        </td>}
+                else
+                {
+                    <td>Not Occupied</td>
+                    <td>
 
-          
-        </tr>
+                        @Html.ActionLink("Mark As Occupied", "MarkAsOccupied", "Employee", new { id = el.Room.Id }, new { @class = "btn btn-primary" })
+
+                    </td>}
+
+
+            </tr>
         }
     </tbody>
-       
+
 </table>
 
+<h2>See available rooms for a given date</h2>
+
+@using (Html.BeginForm("SeeAvailableRooms", "Employee"))
+{
+    <div class="form-group">
+        @Html.LabelFor(Model => Model.CheckInDate)
+        @Html.EditorFor(Model => Model.CheckInDate, new { htmlAttributes = new { @class = "datepicker" } })
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">See All Reservations</button>
+
+}
+
+
+<link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+
+
+@section scripts{
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script>
+        $(function () {
+            $(".datepicker").datepicker({
+                dateFormat: "dd-mm-yy",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "2018:2020"
+            });
+
+        });
+    </script>
+}

@@ -15,5 +15,7 @@ namespace MyHotelApp.Models
 
         public string Description { get; set; }
 
+        public double Cost { get; set; }
+
     }
 }

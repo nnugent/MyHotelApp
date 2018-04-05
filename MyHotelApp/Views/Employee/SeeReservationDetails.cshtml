@@ -41,7 +41,14 @@
 
     <h3>Room Status</h3>
     <ul>
-
+        @if(Model.Reservation.Balance< 0)
+        {
+            <li>Room Balance: Paid</li>
+        }
+        else
+        {
+            <li>Room Balance: $@Model.Reservation.Balance</li>
+        }
         @if (Model.Room.IsClean == true)
         {
             <li>Clean</li>

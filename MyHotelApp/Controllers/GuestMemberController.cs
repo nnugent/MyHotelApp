@@ -94,13 +94,20 @@ namespace MyHotelApp.Controllers
         {
             var userId = User.Identity.GetUserId();
             var guestAccountId = _context.GuestAccounts.SingleOrDefault(a => a.UserId == userId).Id;
+            
             viewModel.Reservation.GuestAccountId = guestAccountId;
             var checkin = viewModel.CheckInDateTime;
             var checkout = viewModel.CheckOutDateTime;
             viewModel.Reservation.CheckIn = new DateTime(checkin.Year, checkin.Month, checkin.Day, 16, 0, 0);
             viewModel.Reservation.CheckOut = new DateTime(checkout.Year, checkout.Month, checkout.Day, 11, 0, 0);
-            var roomId = _context.Rooms.FirstOrDefault(r => r.RoomTypeId == viewModel.Reservation.RoomTypeId).Id;
+
+            var room = _context.Rooms.FirstOrDefault(r => r.RoomTypeId == viewModel.Reservation.RoomTypeId);
+            var roomId = room.Id;
+            var cost = _context.RoomTypes.FirstOrDefault(t => t.Id == room.RoomTypeId).Cost;
+            
             viewModel.Reservation.RoomId = roomId;
+            viewModel.Reservation.Balance = cost;
+
             _context.Reservations.Add(viewModel.Reservation);
             try
             {
