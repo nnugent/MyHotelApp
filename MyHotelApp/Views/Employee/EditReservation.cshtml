@@ -1,0 +1,42 @@
+﻿@model MyHotelApp.ViewModels.ReservationFormViewModel
+@{
+    ViewBag.Title = "EditReservation";
+    Layout = "~/Views/Employee/_EmployeeLayout.cshtml";
+}
+
+<h2>Edit Reservation for @Model.GuestAccount.Name</h2>
+
+@using (Html.BeginForm("EditReservation", "Employee"))
+{
+    <div class="form-group">
+        @Html.LabelFor(Model => Model.CheckInMonth)
+        @Html.TextBoxFor(Model => Model.CheckInMonth, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(Model => Model.CheckInDay)
+        @Html.TextBoxFor(Model => Model.CheckInDay, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(Model => Model.CheckOutMonth)
+        @Html.TextBoxFor(Model => Model.CheckOutMonth, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(Model => Model.CheckOutDay)
+        @Html.TextBoxFor(Model => Model.CheckOutDay, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(Model => Model.RoomTypes)
+        @Html.DropDownListFor(Model => Model.Reservation.RoomTypeId, new SelectList(Model.RoomTypes, "Id", "Type"), "Select Desired Room Type", new { @class = "form-control" })
+    </div>
+
+
+
+    <button type="submit" class="btn btn-primary">Save</button>
+
+}
+
+

@@ -1,0 +1,65 @@
+﻿@model  MyHotelApp.ViewModels.ReservationsByDateViewModel
+
+@{
+    ViewBag.Title = "SeeAllReservationsTable";
+    Layout = "~/Views/Employee/_EmployeeLayout.cshtml";
+}
+
+
+
+<h2>All Reservations</h2>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>See Details</th>
+            <th>Guest Name</th>
+            <th>Room Number</th>
+            <th>Check In Date</th>
+            <th>Check Out Date</th>
+            <th>Status</th>
+            <th>Change Status</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var el in Model.Reservations)
+        {
+        <tr>
+            <td>@Html.ActionLink("See Details", "SeeReservationDetails", "Employee", new { id = el.Id }, new {@class = "btn btn-primary" })</td>
+
+            <td>@Model.GuestAccounts.FirstOrDefault(g => g.Id == el.GuestAccountId).Name</td>
+            <td>@el.RoomId</td>
+            <td>@String.Format("{0: M/d/yyyy}", el.CheckIn)</td>
+            <td>@String.Format("{0: M/d/yyyy}", el.CheckOut)</td>
+
+            @if (el.CheckedIn == true)
+    {
+        <td>
+            Checked In
+        </td>
+}
+
+else
+{
+        <td>Not Checked In</td>
+}
+
+
+            @if (el.CheckedIn == false)
+    {
+        <td>
+            @Html.ActionLink("Check In", "CheckInGuest", "Employee", new { id = el.Id }, new { @class = "btn btn-primary" })
+        </td>
+}
+else
+{
+        <td>
+            @Html.ActionLink("Check Out", "CheckOutGuest", "Employee", new { id = el.Id }, new { @class = "btn btn-primary" })
+        </td>
+}
+        </tr>
+        }
+            </tbody>
+        
+</table>

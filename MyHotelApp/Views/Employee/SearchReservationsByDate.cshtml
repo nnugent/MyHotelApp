@@ -1,0 +1,23 @@
+﻿@model MyHotelApp.ViewModels.SearchReservationsViewModel
+@{
+    ViewBag.Title = "SearchReservationsByDate";
+    Layout = "~/Views/Employee/_EmployeeLayout.cshtml";
+}
+
+<h2>See Reservations For a Given Date</h2>
+
+@using (Html.BeginForm("SeeReservations", "Employee"))
+{
+    <div class="form-group">
+        @Html.LabelFor(Model => Model.CheckInMonth)
+        @Html.TextBoxFor(Model => Model.CheckInMonth, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(Model => Model.CheckInDay)
+        @Html.TextBoxFor(Model => Model.CheckInDay, new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">See All Reservations</button>
+
+}

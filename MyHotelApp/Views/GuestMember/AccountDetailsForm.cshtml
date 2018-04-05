@@ -1,0 +1,53 @@
+﻿@model MyHotelApp.ViewModels.GuestAccountViewModel
+@{
+                /**/
+
+                ViewBag.Title = "AccountDetailsForm";
+                Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Account Details Form</h2>
+
+
+@using (Html.BeginForm("SaveDetails", "GuestMember"))
+{
+    <div class="form-group">
+        @Html.LabelFor(Model => Model.GuestAccount.Name)
+        @Html.TextBoxFor(Model => Model.GuestAccount.Name, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(Model => Model.GuestAccount.AddressLine1)
+        @Html.TextBoxFor(Model => Model.GuestAccount.AddressLine1, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(Model => Model.GuestAccount.AddressLine2)
+        @Html.TextBoxFor(Model => Model.GuestAccount.AddressLine2, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(Model => Model.GuestAccount.City)
+        @Html.TextBoxFor(Model => Model.GuestAccount.City, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(Model => Model.States)
+        @Html.DropDownListFor(Model => Model.GuestAccount.StateId, new SelectList(Model.States, "Id", "Name"), "Select State", new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(Model => Model.GuestAccount.ZipCode)
+        @Html.TextBoxFor(Model => Model.GuestAccount.ZipCode, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(Model => Model.GuestAccount.PhoneNumber)
+        @Html.TextBoxFor(Model => Model.GuestAccount.PhoneNumber, new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+
+}
+
+@*@Html.ActionLink("Save", "SaveDetails", "GuestMember", null, new { @class = "btn btn-primary" })*@

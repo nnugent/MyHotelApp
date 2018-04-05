@@ -1,0 +1,39 @@
+﻿@model MyHotelApp.ViewModels.ReservationsByDateViewModel
+@{
+    ViewBag.Title = "ReservationsTable";
+    Layout = "~/Views/Employee/_EmployeeLayout.cshtml";
+}
+
+
+<h2>Reservations for @String.Format("{0: d/M/yyyy}", (Model.Reservations.FirstOrDefault().CheckIn))</h2>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Guest Name</th>
+            <th>Room Number</th>
+            <th>Check In Date</th>
+            <th>Check Out Date</th>
+            <th> Check in Guest</th>
+            <th>Checked in?</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var el in Model.Reservations)
+        {
+        <tr>
+
+            <td>@Model.GuestAccounts.FirstOrDefault(g => g.Id == el.GuestAccountId).Name</td>
+            <td>@el.RoomId</td>
+            <td>@String.Format("{0: d/M/yyyy}", el.CheckIn)</td>
+            <td>@String.Format("{0: d/M/yyyy}", el.CheckOut)</td>
+            <td>@if (el.CheckedIn == false)
+            { Html.ActionLink("Check In", "CheckInGuest", "Employee", null, new { @class = "btn btn-primary" }); };
+            </td>
+            <td>
+            @el.CheckedIn
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
