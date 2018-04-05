@@ -1,5 +1,4 @@
-﻿
-<div class="navbar navbar-default navbar-fixed-top">
+﻿<div class="navbar navbar-default navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -11,16 +10,18 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                @if (User.IsInRole("CanAdministrate"))
+                @if (User.IsInRole("Employee"))
                 {
-                    <li>@Html.ActionLink("MyHome", "AdministratorHome", "Administrator")</li>
+                    @Html.Partial("~/Views/Employee/_EmployeeNavbar.cshtml")
+                }
+                else if (User.IsInRole("CanAdministrate"))
+                {
+                    @Html.Partial("~/Views/Administrator/_AdminNavbar.cshtml")
                 }
                 else
                 {
-                    <li>@Html.ActionLink("MyHome","Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+                    @Html.Partial("~/Views/Shared/_GuestNavbar.cshtml")
                 }
-                <li>@Html.ActionLink("About", "About", "Home")</li>
-                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
             </ul>
             @Html.Partial("_LoginPartial")
         </div>

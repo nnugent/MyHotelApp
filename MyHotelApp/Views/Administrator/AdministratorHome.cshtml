@@ -3,14 +3,13 @@
     ViewBag.Title = "AdministratorHome";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <div class="jumbotron">
     <h1>Welcome Admin.</h1>
 </div>
 <div>
     <div class="row">
         <div class=" col-md-6 text-center">
-            @Html.ActionLink("View All Rooms", "SeeAllRooms", "Administrator", null, new { @class = "btn btn-primary" })
+            @Html.ActionLink("View All Rooms", "SeeAllRooms", "Administrator", null, new { @class="btn btn-primary" })
         </div>
         <div class=" col-md-6 text-center">
             @Html.ActionLink("Add More Rooms", "CreateRoomType", "Administrator", null, new { @class = "btn btn-primary" })
