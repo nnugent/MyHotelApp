@@ -15,6 +15,7 @@ namespace MyHotelApp.ViewModels
 
         public GuestReservationJunction GuestReservationJunction {get; set;}
 
+        [Display(Name ="Room Types")]
         public List<RoomType> RoomTypes { get; set; }
 
         public GuestAccount GuestAccount { get; set; }
