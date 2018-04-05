@@ -60,7 +60,8 @@ namespace MyHotelApp.Controllers
         }
         public ActionResult SearchReservationsByDate()
         {
-            return View();
+            var viewModel = new SearchReservationsViewModel();
+            return PartialView("SearchReservationsByDate", viewModel);
         }
 
         public ActionResult MarkRoomAsClean(int? id)

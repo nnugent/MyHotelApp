@@ -10,5 +10,12 @@ namespace MyHotelApp.ViewModels
     {
         public List <Reservation> Reservations { get; set; }
         public List <GuestAccount> GuestAccounts { get; set; }
+
+        public SearchReservationsViewModel SearchReservationsViewModel { get; set; }
+
+        public ReservationsByDateViewModel()
+        {
+           SearchReservationsViewModel = new SearchReservationsViewModel();
+        }
     }
 }
