@@ -4,22 +4,21 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>ReservationForm</h2>
-
+<h2>Reservation Form</h2>
 
 @using (Html.BeginForm("SaveReservation", "GuestMember"))
 {
-    
-<div>
-    @Html.LabelFor(Model => Model.CheckInDateTime)
-    <br />
-    @Html.EditorFor(Model => Model.CheckInDateTime, new { htmlAttributes = new { @class = "datepicker" } })
-</div>
+
+    <div>
+        @Html.LabelFor(Model => Model.CheckInDateTime)
+        <br />
+        @Html.EditorFor(Model => Model.CheckInDateTime, new { htmlAttributes = new { @class = "datepicker" } })
+    </div>
 
     <div class="form-group">
 
         @Html.LabelFor(Model => Model.CheckOutDateTime)
-        <br/>
+        <br />
         @Html.EditorFor(Model => Model.CheckOutDateTime, new { htmlAttributes = new { @class = "datepicker" } })
     </div>
 
@@ -28,24 +27,22 @@
         @Html.DropDownListFor(Model => Model.Reservation.RoomTypeId, new SelectList(Model.RoomTypes, "Id", "Type"), "Select Desired Room Type", new { @class = "form-control" })
     </div>
 
-
-
     <button type="submit" class="btn btn-primary">Save</button>
 
 }
 
-<link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
-@section scripts{
-    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
-    <script>
-        $(function () {
-            $(".datepicker").datepicker({
-                dateFormat: "yy-mm-dd",
-                changeMonth: true,
-                changeYear: true,
-                yearRange: "2018:2020"
-            });
+    <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+    @section scripts{
+        <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+        <script>
+            $(function () {
+                $(".datepicker").datepicker({
+                    dateFormat: "mm-dd-yy",
+                    changeMonth: true,
+                    changeYear: true,
+                    yearRange: "2018:2020"
+                });
 
-        });
-    </script>
-}
+            });
+        </script>
+    }

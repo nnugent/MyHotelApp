@@ -15,7 +15,8 @@ namespace MyHotelApp.ViewModels
 
         public ReservationsByDateViewModel()
         {
-           SearchReservationsViewModel = new SearchReservationsViewModel();
+            SearchReservationsViewModel = new SearchReservationsViewModel();
+            SearchReservationsViewModel.CheckInDate = DateTime.Today;
         }
     }
 }

@@ -63,12 +63,15 @@ namespace MyHotelApp.Controllers
             return View("ReservationForm");
         }
 
+        [AllowAnonymous]
         public ActionResult ReservationForm()
         {
             var roomTypes = _context.RoomTypes.ToList();
             var viewModel = new ReservationFormViewModel()
             {
-                RoomTypes = roomTypes
+                RoomTypes = roomTypes,
+                CheckInDateTime = DateTime.Today,
+                CheckOutDateTime = DateTime.Today.Add(TimeSpan.FromHours(24))
             };
             return View("ReservationForm", viewModel);
         }

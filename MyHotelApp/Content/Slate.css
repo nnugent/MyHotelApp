@@ -3775,8 +3775,8 @@ select[multiple].input-lg {
     display: inline-block;
     margin-bottom: 0;
     font-weight: normal;
+    vertical-align: central;
     text-align: center;
-    vertical-align: middle;
     -ms-touch-action: manipulation;
     touch-action: manipulation;
     cursor: pointer;
@@ -3790,7 +3790,9 @@ select[multiple].input-lg {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    width: 100%;
+    width: 160px;
+    height: 40px;
+    padding: 10px;
 }
 
     .btn:focus,
@@ -3915,7 +3917,6 @@ fieldset[disabled] a.btn {
         color: #ffffff;
         background-color: #62686d;
         border-color: #5d6368;
-        width: 100%;
     }
 
     .btn-primary:active,
