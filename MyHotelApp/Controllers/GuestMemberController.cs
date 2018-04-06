@@ -121,7 +121,28 @@ namespace MyHotelApp.Controllers
             viewModel.Reservation.CheckIn = new DateTime(checkin.Year, checkin.Month, checkin.Day, 16, 0, 0);
             viewModel.Reservation.CheckOut = new DateTime(checkout.Year, checkout.Month, checkout.Day, 11, 0, 0);
 
-            var room = _context.Rooms.FirstOrDefault(r => r.RoomTypeId == viewModel.Reservation.RoomTypeId);
+
+            
+            var possibleRooms = _context.Rooms.Where(r => r.RoomTypeId == viewModel.Reservation.RoomTypeId).ToList();
+
+            var reservations = _context.Reservations.ToList();
+
+            List<int?> reservationRoomIds = new List<int?>();
+            foreach (var reservation in reservations)
+            {
+                reservationRoomIds.Add(reservation.RoomId);
+            }
+
+            for(int i =0; i <possibleRooms.Count; i++)
+            {
+                if (reservationRoomIds.Contains(possibleRooms[i].Id))
+                {
+                    possibleRooms.Remove(possibleRooms[i]);
+                }
+            }
+            var room = possibleRooms.FirstOrDefault(r => r.RoomTypeId == viewModel.Reservation.RoomTypeId);
+
+
             var roomId = room.Id;
             var cost = _context.RoomTypes.FirstOrDefault(t => t.Id == room.RoomTypeId).Cost;
             
