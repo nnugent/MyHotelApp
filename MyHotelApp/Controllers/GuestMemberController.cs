@@ -67,11 +67,13 @@ namespace MyHotelApp.Controllers
         public ActionResult ReservationForm()
         {
             var roomTypes = _context.RoomTypes.ToList();
+            var states = _context.States.ToList();
             var viewModel = new ReservationFormViewModel()
             {
                 RoomTypes = roomTypes,
                 CheckInDateTime = DateTime.Today,
-                CheckOutDateTime = DateTime.Today.Add(TimeSpan.FromHours(24))
+                CheckOutDateTime = DateTime.Today.Add(TimeSpan.FromHours(24)),
+                States = states
             };
             return View("ReservationForm", viewModel);
         }

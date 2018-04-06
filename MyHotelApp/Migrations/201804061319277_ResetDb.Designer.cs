@@ -7,13 +7,13 @@ namespace MyHotelApp.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class AddCostColumn1 : IMigrationMetadata
+    public sealed partial class ResetDb : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddCostColumn1));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ResetDb));
         
         string IMigrationMetadata.Id
         {
-            get { return "201804051834572_AddCostColumn1"; }
+            get { return "201804061319277_ResetDb"; }
         }
         
         string IMigrationMetadata.Source

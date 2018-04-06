@@ -13,8 +13,10 @@ namespace MyHotelApp.Models
 
         public string Name { get; set; }
 
+        [Display(Name="Address Line 1")]
         public string AddressLine1 { get; set; }
 
+        [Display(Name="Address Line 2")]
         public string AddressLine2 { get; set; }
 
         public string City { get; set; }
@@ -24,6 +26,7 @@ namespace MyHotelApp.Models
         [ForeignKey("StateId")]
         public State State { get; set; }
 
+        [Display(Name ="Zip Code")]
         public string ZipCode { get; set; }
 
         public string PhoneNumber { get; set; }
