@@ -11,17 +11,22 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 @if (User.IsInRole("Employee"))
-                {
-                    @Html.Partial("~/Views/Employee/_EmployeeNavbar.cshtml")
-                }
-                else if (User.IsInRole("CanAdministrate"))
-                {
-                    @Html.Partial("~/Views/Administrator/_AdminNavbar.cshtml")
-                }
-                else
-                {
-                    @Html.Partial("~/Views/Shared/_GuestNavbar.cshtml")
-                }
+    {
+            @Html.Partial("~/Views/Employee/_EmployeeNavbar.cshtml")
+}
+else if (User.IsInRole("CanAdministrate"))
+{
+            @Html.Partial("~/Views/Administrator/_AdminNavbar.cshtml")
+}
+
+else if (Request.IsAuthenticated)
+{
+            @Html.Partial("~/Views/Shared/_LoggedInGuestNavbar.cshtml")
+}
+else
+{
+            @Html.Partial("~/Views/Shared/_GuestNavbar.cshtml")
+}
             </ul>
             @Html.Partial("_LoginPartial")
         </div>

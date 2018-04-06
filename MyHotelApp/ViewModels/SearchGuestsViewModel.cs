@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using MyHotelApp.Models;
 using System.ComponentModel.DataAnnotations;
 
 namespace MyHotelApp.ViewModels
 {
-    public class DatePickerViewModel
+    public class SearchGuestsViewModel
     {
-      public DateTime dtmDate { get; set; }
+        public GuestAccount GuestAccount { get; set; }
     }
 }

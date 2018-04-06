@@ -11,5 +11,7 @@ namespace MyHotelApp.ViewModels
         [Display(Name = "Filter Date:")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime CheckInDate { get; set; }
+
+       
     }
 }

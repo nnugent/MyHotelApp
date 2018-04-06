@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using MyHotelApp.Models;
 using MyHotelApp.ViewModels;
+using System.ComponentModel.DataAnnotations;
 
 namespace MyHotelApp.ViewModels
 {

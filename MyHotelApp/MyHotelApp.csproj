@@ -275,12 +275,14 @@
     <Compile Include="ViewModels\AdministratorFormViewModel.cs" />
     <Compile Include="ViewModels\DatePickerViewModel.cs" />
     <Compile Include="ViewModels\GuestAccountViewModel.cs" />
+    <Compile Include="ViewModels\GuestReservationViewModel.cs" />
     <Compile Include="ViewModels\NameHotelViewModel.cs" />
     <Compile Include="ViewModels\ReservationDetailsViewModel.cs" />
     <Compile Include="ViewModels\ReservationFormViewModel.cs" />
     <Compile Include="ViewModels\ReservationsByDateViewModel.cs" />
     <Compile Include="ViewModels\RoomInfo.cs" />
     <Compile Include="ViewModels\RoomViewModel.cs" />
+    <Compile Include="ViewModels\SearchGuestsViewModel.cs" />
     <Compile Include="ViewModels\SearchReservationsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -393,6 +395,7 @@
     <Content Include="Views\Administrator\CreateRoomType.cshtml" />
     <Content Include="Views\Administrator\HotelEntryForm.cshtml" />
     <Content Include="Views\Administrator\SeeAllRooms.cshtml" />
+    <Content Include="Views\Employee\SearchReservationsByDate.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -430,7 +433,6 @@
     <Content Include="Views\GuestMember\AccountDetailsForm.cshtml" />
     <Content Include="Views\GuestMember\Index.cshtml" />
     <Content Include="Views\GuestMember\NoAvailableRooms.cshtml" />
-    <Content Include="Views\Employee\SearchReservationsByDate.cshtml" />
     <Content Include="Views\Employee\ReservationsTable.cshtml" />
     <Content Include="Views\Employee\SeeAllReservationsTable.cshtml" />
     <Content Include="Views\Employee\_EmployeeNavBar.cshtml" />
@@ -442,6 +444,9 @@
     <Content Include="Views\Administrator\_AdminNavBar.cshtml" />
     <Content Include="Views\Administrator\AdministratorHome.cshtml" />
     <Content Include="Views\Employee\AvailableRoomsOnGivenDate.cshtml" />
+    <Content Include="Views\Shared\_GuestNavbar.cshtml" />
+    <Content Include="Views\Shared\_LoggedInGuestNavBar.cshtml" />
+    <Content Include="Views\GuestMember\Reservations.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

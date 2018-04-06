@@ -78,6 +78,21 @@ namespace MyHotelApp.Controllers
             return View("ReservationForm", viewModel);
         }
 
+        public ActionResult Reservations()
+        {
+            var userid = User.Identity.GetUserId();
+            var currentUser = _context.GuestAccounts.FirstOrDefault(g => g.UserId == userid);
+            var reservations = _context.Reservations.Where(r => r.GuestAccountId == currentUser.Id).ToList();
+            var viewModel = new GuestReservationViewModel
+            {
+                GuestAccount = currentUser,
+                Reservations = reservations
+            };
+            return View("Reservations", viewModel);
+        }
+
+
+
         public ActionResult Edit(int id)
         {
             var roomTypes = _context.RoomTypes.ToList();
@@ -126,8 +141,14 @@ namespace MyHotelApp.Controllers
             var controller = new SmsController();
             controller.SendEmail(message, "stephanie.glyzewski@gmail.com");
 
-            return View("Index");
+            return RedirectToAction("Reservations");
         }
+
+        //public string reservationMessageBuilder()
+        //{
+        //    StringBuilder message = new StringBuilder();
+        //    return reservationMessageBuilder;
+        //}
 
         public bool CheckAvailability(DateTime dateTime)
         {

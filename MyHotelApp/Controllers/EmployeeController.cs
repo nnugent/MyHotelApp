@@ -61,6 +61,20 @@ namespace MyHotelApp.Controllers
             return View("SeeAllReservationsTable", viewModel);
         }
 
+        public ActionResult SeeTodaysReservations()
+        {
+            var today = DateTime.Now;
+            var dateToSearch = new DateTime(today.Year, today.Month, today.Day, 16, 0, 0);
+            var reservations = _context.Reservations.Where(r => r.CheckIn == dateToSearch).ToList();
+            var guests = _context.GuestAccounts.ToList();
+
+            var viewModel = new ReservationsByDateViewModel()
+            {
+                Reservations = reservations,
+                GuestAccounts = guests
+            };
+            return View("SeeAllReservationsTable", viewModel);
+        }
 
         public ActionResult SearchReservationsByDate()
         {
@@ -87,6 +101,12 @@ namespace MyHotelApp.Controllers
             var controller = new SmsController();
             controller.SendSms(message, number);
             return RedirectToAction("SeeAllRooms");
+        }
+
+        public ActionResult SearchByGuestName()
+        {
+            var viewModel = new SearchGuestsViewModel();
+            return PartialView("SearchReservationsByDate", viewModel);
         }
 
         public ActionResult SeeAvailableRooms(RoomViewModel view)
