@@ -7,9 +7,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MyHotelApp.ViewModels
 {
-    public class GuestAccountViewModel
+    public class GuestReservationViewModel
     {
-        public List<State> States { get; set; }
+        public List<Reservation> Reservations { get; set; }
         public GuestAccount GuestAccount { get; set; }
+        public RoomType RoomType { get; set; }
     }
 }

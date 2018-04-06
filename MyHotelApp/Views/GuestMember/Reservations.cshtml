@@ -1,0 +1,34 @@
+﻿@model MyHotelApp.ViewModels.GuestReservationViewModel
+
+<h2>My Reservations</h2>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Check In Date</th>
+            <th>Check Out Date</th>
+            <th>Balance</th>
+         
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var el in Model.Reservations)
+        {
+        <tr>
+            <td>@String.Format("{0: M/d/yyyy}", el.CheckIn)</td>
+            <td>@String.Format("{0: M/d/yyyy}", el.CheckOut)</td>
+
+            @if (el.Balance > 0)
+            {
+            <td>$@el.Balance</td>
+            }
+            else
+            {
+                <td>Paid</td>
+            }
+        </tr>
+        }
+    </tbody>
+
+</table>

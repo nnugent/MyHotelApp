@@ -7,9 +7,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MyHotelApp.ViewModels
 {
-    public class GuestAccountViewModel
+    public class SearchGuestsViewModel
     {
-        public List<State> States { get; set; }
         public GuestAccount GuestAccount { get; set; }
     }
 }
